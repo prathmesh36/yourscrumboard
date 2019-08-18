@@ -1,0 +1,51 @@
+<div class="title" ng-hide="edit">
+    <span class="title" style="font-weight:bold;">{{ card.title }} </span> 
+    <div class="dropdown float-right">
+        <div id="cardmenu" class="dropdown dropbottom" data-toggle="dropdown"><i style="padding:5px 10px;" class="fas fa-ellipsis-v" ></i> </div>
+        <div class="dropdown-menu" style="font-size:12px;">
+            <a class="dropdown-item" ng-click="edit=true" >Edit/Delete</a>
+            <a class="dropdown-item" data-toggle="modal" data-target="#moveModal{{ card.id }}">Move Card</a>
+        </div>
+    </div>
+    <hr>
+    <span class="description" style="color:grey;font-size:13px;">{{card.description}}</span>
+</div>
+
+<div class="title form-group" ng-show="edit">
+    <input type="text" placeholder="{{ card.title }}" class="title form-control" style="font-weight:bold;height:25px;font-size:13px;" ng-model="card.title">
+    <hr>
+    <textarea class="form-control"  style="color:grey;font-size:13px;" ng-model="card.description">{{card.description}}</textarea>
+    <br><button ng-click="edit=update()" class="action-btn btn btn-success">Edit</button>
+    <button ng-click="edit=delete()"  class="action-btn btn btn-danger">Delete</button>
+    <button ng-click="edit=false" class="action-btn btn btn-info">Close</button>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="moveModal{{ card.id }}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" >
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h3 class="modal-title" style="font-size:17px;">Move Card to another List</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body" style="font-size:15px;">
+                <div class="form-group">
+                <label for="listname">Select List:</label>
+                <select class="form-control" id="listname" style="font-size:12px;" ng-model="movelist">
+                    <option  ng-repeat="list in data" value="{{list.id}}" >{{list.name}}</option>
+                </select>
+                </div>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+            <button ng-click="movecard(movelist,card)" type="button" class="btn btn-success" id="deleteModalbtn" data-dismiss="modal" style="font-size:13px;" >Move</button>
+            </div>
+        
+        </div>
+    </div>
+</div>
