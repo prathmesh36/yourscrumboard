@@ -19,6 +19,8 @@
             $http.post('/scrumboard/cards/',card)
                 .then(function(response){
                     list.cards.push(response.data);
+                    $('.add-card-btn').val('');
+                    return "";
                 },
                 function(){
                     alert('Failed to create a card');
@@ -34,6 +36,8 @@
             $http.post('/scrumboard/lists/',list)
                 .then(function(response){
                     data.push(response.data);
+                    $('.add-list-btn').val('');
+                    return "";
                 },
                 function(){
                     alert('Failed to create a List');

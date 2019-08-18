@@ -97,7 +97,7 @@
                         </ul>
 
                         <input class="add-card-btn tbtn" type="text" placeholder="Add a card" ng-model="new_title" />
-                        <button ng-click="add(list,new_title)">+</button>
+                        <button ng-click="new_title=add(list,new_title)">+</button>
 
                     </div>
 
@@ -131,7 +131,7 @@
                 <div class="col-md-3 col-sm-4 col-12" style="padding-top:10px;">
                     <div class="list">
                         <input type="text" class="add-list-btn tbtn placeholderwhite" placeholder="Add a list" ng-model="list_name"/>
-                        <button ng-click="addlist(data,list_name)">+</button>
+                        <button ng-click="list_name=addlist(data,list_name)">+</button>
                     </div>
                 </div>
 
