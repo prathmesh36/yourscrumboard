@@ -25,7 +25,7 @@ SECRET_KEY = '(w%7gmo7k%)+q94)x92balmrpq8g)*ip0%=nn8d$sw#0(7x99u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['yourscrumboard.herokuapp.com']
 
 
 # Application definition
