@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'scrumboard',
-    'rest_framework'
+    'rest_framework',
+    'user_auth',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,8 @@ STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'static'),
 );
 django_heroku.settings(locals())
+
+CRISPY_TEMPLATE_PACK='bootstrap4'
+
+LOGIN_REDIRECT_URL='home'
+LOGIN_URL='login'

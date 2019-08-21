@@ -214,6 +214,20 @@ body {
     font-weight: 700;
     white-space: nowrap;
 }
+.offsesbtn{
+    font-size: 1.4rem;
+    color:white;
+}
+.offsesbtn:hover{
+    color:#d6d6d6;
+    text-decoration: none;
+}
+.drpbtn{
+    padding-top:8px;
+}
+.dropdown-item{
+    padding:5px;
+}
  
 @media (max-width:655px){
     .logo{
@@ -236,8 +250,15 @@ body {
         font-size: 1.1rem;
         width: 2.5rem;
     }
+    .drpbtn{
+        padding-top:10px; 
+    }
     .boards-menu{
         width:13rem
+    }
+    .offsesbtn{
+        font-size: 1.3rem;
+        color:white;
     }
 }
 
@@ -260,6 +281,9 @@ body {
     }
     .user-settings-btn{
         margin-right: 0.2rem
+    }
+    .offsesbtn{
+        font-size:1.1rem ;
     }
 }
 
@@ -382,3 +406,33 @@ body {
     content: '...';
 }
 
+/*Login Register CSS*/
+
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.login-form-1{
+    padding: 1%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    background:white;
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #2067a3;
+}
+.login-form-2{
+    padding: 1%;
+    background: #2067a3;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+.login-container form{
+    padding: 10%;
+}
+.form-text{
+    color:#d6d6d6 !important;
+}
