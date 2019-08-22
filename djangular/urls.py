@@ -28,3 +28,4 @@ urlpatterns = [
     path('profile/',user_views.profile,name="profile"),
     path('register/',user_views.register, name='register'),
 ]
+

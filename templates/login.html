@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
 {% block content %}
     <div class="container-fluid login-container">
+        {% if user.is_authenticated %}
+            <script>
+                function pageRedirect() {
+                    window.location.replace(`{% url 'home' %}`);
+                }  
+                pageRedirect();
+            </script>
+        {% endif %}
         <div class="row" >
             <div class="col-md-4 col-sm-8 col-10 login-form-2" style="font-size:1.3rem;color:white;float:none;margin: 0 auto;">
                 <div class="content-section">

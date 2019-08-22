@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% if user.is_authenticated is False %}
+        <script>
+            function pageRedirect() {
+                window.location.replace(`{% url 'login' %}`);
+            }  
+            pageRedirect();
+        </script>
+    {% endif %}
     <!-- Board info bar -->
     <section class="board-info-bar container-fluid" >
 
-        <div class="board-controls">
-
+        <div class="board-controls" ng-controller="ScrumboardController">
+            {% verbatim %}
             <button class="board-title btn" >
-                <h2 style="color:white;">Project Djangular</h2>
+                    <h2 style="color:white;" ng-repeat="currproject in currprojects">{{ currproject.name }}</h2>
             </button>
+            {% endverbatim %}
 
             <button class="star-btn btn" aria-label="Star Board">
                 <i class="far fa-star" aria-hidden="true" style="color:white;"></i>

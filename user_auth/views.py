@@ -7,7 +7,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-@login_required
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -17,8 +16,11 @@ def register(request):
             messages.success(request,'Your Account has been created, now you can login')
             return redirect('home')
     else:
-        form = UserRegisterForm()
-    return render(request,'register.html',{'form':form})
+        if request.user.is_authenticated:
+            return redirect('home')
+        else:
+            form = UserRegisterForm()
+            return render(request,'register.html',{'form':form})            
 
 @login_required
 def profile(request):

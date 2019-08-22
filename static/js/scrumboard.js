@@ -1,15 +1,34 @@
 (function(){
     'use strict';
     angular.module('scrumboard.demo',[])
-    .controller('ScrumboardController', ['$scope','$http', ScrumboardController]);
+    .controller('ScrumboardController', ['$scope','$http', ScrumboardController])
 
     function ScrumboardController($scope,$http){
         $scope.data =[];
-        $http.get('/scrumboard/lists/').then(
+        $scope.projects =[];
+        $scope.currprojects=[];
+        var pid=findGetParameter("pid");
+        $http.get('/scrumboard/projects/').then(
             function(response){
-                $scope.data=response.data;
+                $scope.projects=response.data;
             }
         );
+        if(pid!="")
+        {
+            $http.get('/scrumboard/projects/?pid='+pid).then(
+                function(response){
+                    $scope.currprojects=response.data;
+                }
+            );
+            $http.get('/scrumboard/lists/?pid='+pid).then(
+                function(response){
+                    $scope.data=response.data;
+                }
+            );
+        }
+        else{
+            
+        }
 
         $scope.add = function(list,title){
             var card ={
@@ -56,4 +75,16 @@
             );
         };
     }
+
+    function findGetParameter(parameterName) {
+        var result = null,
+            tmp = [];
+        var items = location.search.substr(1).split("&");
+        for (var index = 0; index < items.length; index++) {
+            tmp = items[index].split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        }
+        return result;
+    }
+
 }());
